@@ -1,58 +1,58 @@
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  index = 0,
+}: {
+  product: Product;
+  index?: number;
+}) {
   const isAvailable = product.available !== false;
+  const rotate = index % 3 === 0 ? "-rotate-1" : index % 3 === 1 ? "rotate-1" : "rotate-0";
 
   return (
     <Link
       href={`/produk/${product.id}`}
-      className="group block overflow-hidden rounded-2xl bg-white ring-1 ring-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-black/20"
+      className={`group block ${rotate} transition-transform duration-200 hover:rotate-0`}
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
-        <img
-          src={
-            product.images?.[0] ||
-            "https://placehold.co/900x1100/png?text=No+Image"
-          }
-          alt={product.name}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-        />
+      <div className="relative border-2 border-dashed border-[#211D17]/30 bg-[#F7F2E4] p-2">
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#DDD3B8]">
+          <img
+            src={
+              product.images?.[0] ||
+              "https://placehold.co/900x1100/EDE7D8/211D17?text=No+Image"
+            }
+            alt={product.name}
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          />
 
-        {/* Gradient overlay biar teks/badge kebaca di atas foto */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          {!isAvailable && (
+            <div className="absolute inset-0 flex items-center justify-center bg-[#211D17]/50">
+              <span className="rotate-[-8deg] border-2 border-[#EDE7D8] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#EDE7D8]">
+                Habis
+              </span>
+            </div>
+          )}
 
-        {/* Kategori sebagai badge di atas foto */}
-        {product.category && (
-          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-neutral-700 backdrop-blur">
-            {product.category}
-          </span>
-        )}
+          {product.category && (
+            <span className="absolute left-2 top-2 rounded-full border border-[#B04A26]/70 bg-[#EDE7D8]/90 px-2.5 py-0.5 text-[10px] font-semibold text-[#B04A26]">
+              {product.category}
+            </span>
+          )}
+        </div>
 
-        {/* Status habis sebagai ribbon, bukan teks polos */}
-        {!isAvailable && (
-          <span className="absolute right-3 top-3 rounded-full bg-red-600 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
-            Habis
-          </span>
-        )}
+        {/* lubang tag */}
+        <span className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-[#EDE7D8] ring-2 ring-[#211D17]/30" />
       </div>
 
-      <div className="p-4">
-        <h3 className="line-clamp-1 font-bold text-neutral-900">
+      <div className="mt-3 px-1">
+        <h3 className="line-clamp-1 text-sm font-semibold text-[#211D17]">
           {product.name}
         </h3>
-        <div className="mt-2 flex items-center justify-between">
-          <p className="text-base font-semibold text-neutral-900">
-            Rp{Number(product.price || 0).toLocaleString("id-ID")}
-          </p>
-          <span
-            className={`text-xs font-semibold ${
-              isAvailable ? "text-emerald-600" : "text-red-500"
-            }`}
-          >
-            {isAvailable ? "Tersedia" : "Habis"}
-          </span>
-        </div>
+        <p className="mt-1 text-sm font-bold text-[#33465B]">
+          Rp{Number(product.price || 0).toLocaleString("id-ID")}
+        </p>
       </div>
     </Link>
   );
