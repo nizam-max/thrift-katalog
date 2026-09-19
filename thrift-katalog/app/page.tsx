@@ -59,9 +59,9 @@ export default function Home() {
                 GANTI TEKS DI SINI
             */}
             <h1 className="mt-4 text-5xl font-black leading-tight md:text-7xl">
-              Style yang
+              Selamat Datang
               <br />
-              punya karakter.
+              di Katalog kami.
             </h1>
 
 
