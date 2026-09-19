@@ -1,8 +1,8 @@
 export const STORE = {
   name: "KOESRIET",
   tagline: "Everyday style, made simple.",
-  whatsapp: "6281234567890",
-  instagram: "https://instagram.com/contoh",
-  tiktok: "https://tiktok.com/@contoh",
-  facebook: "https://facebook.com/contoh",
+  whatsapp: "6285608915279",
+  instagram: "https://instagram.com/nangkene.thrift",
+  tiktok: "https://tiktok.com/@nangkene.thriftt",
+  facebook: "https://facebook.com/Nangkene Nizamm",
 };
