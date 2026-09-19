@@ -1,5 +1,5 @@
 export const STORE = {
-  name: "KOESRIET",
+  name: "Nangkene Thrift",
   tagline: "Everyday style, made simple.",
   whatsapp: "6285608915279",
   instagram: "https://instagram.com/nangkene.thrift",
