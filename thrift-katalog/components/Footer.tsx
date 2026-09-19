@@ -1,0 +1,2 @@
+import { STORE } from "@/lib/config";
+export function Footer(){return <footer className="border-t bg-white"><div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-10 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between"><p>© {new Date().getFullYear()} {STORE.name}</p><div className="flex gap-4"><a href={STORE.instagram} target="_blank" rel="noreferrer">Instagram</a><a href={STORE.tiktok} target="_blank" rel="noreferrer">TikTok</a><a href={STORE.facebook} target="_blank" rel="noreferrer">Facebook</a></div></div></footer>}
